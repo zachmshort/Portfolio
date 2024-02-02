@@ -9,6 +9,24 @@ import VideosPage from './VideosPage';
 import ContactPage from './ContactPage.js';
 import AboutPage from './AboutPage';
 
+const homePageStyles = {
+  body: {
+    height: '100vh', 
+    margin: 0,       
+    padding: 0,      
+  },
+  link: {
+    textDecoration: 'none',
+  },
+  homePage: {
+  },
+  myName: {
+  },
+  ulHomePage: {
+    listStyleType: 'none',
+  },
+};
+
 function App() {
   const [showHomePage, setShowHomePage] = useState(true);
 
@@ -22,22 +40,21 @@ function App() {
   return (
     <Router>
       {showHomePage && (
-    <div className="homePage">
+    <>
+    <body style={homePageStyles.body}>
       <div className="myName-Info">
       <h1 className="myName">Hi! I'm Zachary Short</h1>
-      <p>I have a passion for UI/UX design, 3D modeling/animation, and video editing</p>
+      <p className="meDesc">I have a passion for UI/UX design, 3D modeling/animation, and video editing</p>
       </div>
-      <div className="ulContainerHomePage">
-        <ul className="ulHomePage">
-          <li><Link to="/websites" onClick={handleNavigate}>Websites I've Built</Link></li>
-          <li><Link to="/3d-models" onClick={handleNavigate}>3D Models I've Built</Link></li>
-          <li><Link to="/videos" onClick={handleNavigate}>Videos I've Edited</Link></li>
-          <li><Link to="/contact" onClick={handleNavigate}>Contact Me</Link></li>
-          <li><Link to="/about" onClick={handleNavigate}>About Me</Link></li>
-          
+        <ul className="ulHomePage" style={homePageStyles.ulHomePage}>
+          <li><Link to="/websites" style={homePageStyles.link} onClick={handleNavigate}>Websites I've Built</Link></li>
+          <li><Link to="/3d-models" style={homePageStyles.link} onClick={handleNavigate}>3D Models I've Built</Link></li>
+          <li><Link to="/videos" style={homePageStyles.link} onClick={handleNavigate}>Videos I've Edited</Link></li>
+          <li><Link to="/contact" style={homePageStyles.link} onClick={handleNavigate}>Contact Me</Link></li>
+          <li><Link to="/about" style={homePageStyles.link} onClick={handleNavigate}>About Me</Link></li>
         </ul>
-      </div>
-    </div>
+    </body>
+    </>
     )}
       <Routes>
       <Route path="/test" element={<TestPage />} />
